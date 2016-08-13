@@ -3,7 +3,7 @@
 
 import unittest
 
-from dgtools.testcases import DGTestCase, DGResult, DGTestCaseCheck
+from dgtools.testcase import DGTestCase, DGResult, DGTestCaseCheck
 
 class DGTestCaseTest(unittest.TestCase):
     TESTCASE = "/a/path/to/a/expect/file.exp"
