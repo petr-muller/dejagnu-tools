@@ -8,6 +8,9 @@ class DGResult(Enum):
     PASS = "PASS"
     FAIL = "FAIL"
 
+    def __str__(self):
+        return str(self.value)
+
 class DGTestCaseCheck(object):
     """Represents a single DG check: a key and a result"""
 
