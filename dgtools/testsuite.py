@@ -1,7 +1,9 @@
 """Module contains classes and methods representing DG testsuites."""
 
 from io import TextIOBase
+from typing import Iterable
 from dgtools.testcase import DGTestCase
+
 
 class DGTestsuite(object):
     """Represents DG testsuite"""
@@ -10,12 +12,12 @@ class DGTestsuite(object):
 
     def __init__(self, name: str) -> None:
         self.name = name
-        self.testcases = [] # type: List[DGTestCase]
+        self._tcmap = {} # type: Dict[str, DGTestCase]
 
     def add_testcase(self, case: DGTestCase) -> None:
         """Adds a testcase to this testuite"""
 
-        self.testcases.append(case)
+        self._tcmap[case.name] = case
 
     def write_sum_file(self, output_stream: TextIOBase) -> None:
         """Write this testsuite into a stream, resembling the .sum format"""
@@ -23,3 +25,11 @@ class DGTestsuite(object):
             output_stream.write("Running {0} ...\n".format(case.name))
             for check in case.checks:
                 output_stream.write("{0}: {1}\n".format(check.result, check.name))
+
+    def __getitem__(self, index: str) -> DGTestCase:
+        return self._tcmap[index]
+
+    @property
+    def testcases(self) -> Iterable[DGTestCase]:
+        """Returns a view on a set of testcases in this testsuite"""
+        return self._tcmap.values()

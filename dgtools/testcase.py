@@ -5,6 +5,9 @@ from enum import Enum, unique
 @unique
 class DGResult(Enum):
     """Constants representing results of the individual checks"""
+
+    UNSUPPORTED = "UNSUPPORTED"
+    KFAIL = "KFAIL"
     PASS = "PASS"
     FAIL = "FAIL"
 

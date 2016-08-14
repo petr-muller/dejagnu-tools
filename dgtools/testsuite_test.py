@@ -24,7 +24,14 @@ class DGTestsuiteTest(unittest.TestCase):
 
         suite.add_testcase(case)
         assert len(suite.testcases) == 1
-        assert suite.testcases[0] is case
+        assert case in suite.testcases
+
+    def getitem_test(self):
+        suite = DGTestsuite(DGTestsuiteTest.NAME)
+        case = DGTestCase(DGTestsuiteTest.NAME)
+
+        suite.add_testcase(case)
+        assert suite[DGTestsuiteTest.NAME] is case
 
     def write_sum_file_test(self):
         suite = DGTestsuite(DGTestsuiteTest.NAME)
