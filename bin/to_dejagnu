@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+"""Converts an input stream of a given format to DG testsuite and writes it to the stdout"""
+
+from dgtools.conversions import main
+
+if __name__ == "__main__":
+    main()

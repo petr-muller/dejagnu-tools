@@ -2,4 +2,4 @@ language: python
 python:
   - "3.5"
 install: "pip install -r requirements.txt"
-script: "nosetests dgtools && pylint dgtools --rcfile=.pylintrc && mypy dgtools"
+script: "nosetests dgtools* && pylint dgtools bin/* --rcfile=.pylintrc && mypy dgtools bin/*"
